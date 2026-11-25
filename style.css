@@ -39,7 +39,7 @@
 }
 
 /* ==========================================================================
-   CSS Reset & Base Rules
+   CSS Reset & Base Rules (Mobile-First Safe)
    ========================================================================== */
 *, *::before, *::after {
   box-sizing: border-box;
@@ -48,8 +48,8 @@
 }
 
 html {
-  /* Smooth scroll behavior requested by task brief */
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
@@ -60,6 +60,7 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -68,7 +69,7 @@ body {
   width: 100%;
   max-width: 1140px;
   margin: 0 auto;
-  padding: 0 1.5rem;
+  padding: 0 1.25rem;
 }
 
 /* Base Headings & Links */
@@ -98,7 +99,7 @@ img {
 }
 
 /* ==========================================================================
-   Semantic Header & Flexbox Navbar
+   Semantic Header & Mobile-First Flexbox Navbar
    ========================================================================== */
 .site-header {
   position: sticky;
@@ -108,18 +109,18 @@ img {
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--border-color);
-  padding: 0.85rem 1.5rem;
+  padding: 0.85rem 1.25rem;
   box-shadow: var(--shadow-sm);
 }
 
 .navbar {
   max-width: 1140px;
   margin: 0 auto;
-  /* Flexbox navbar layout */
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
-  gap: var(--space-md);
+  gap: 0.75rem;
 }
 
 .nav-brand {
@@ -133,43 +134,80 @@ img {
   color: var(--primary-color);
 }
 
-.nav-links {
-  /* Flexbox nav links in a row */
+/* Mobile Hamburger Button (Visible on Mobile, Hidden on Desktop) */
+.hamburger {
   display: flex;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  gap: 2rem;
+  gap: 5px;
+  width: 40px;
+  height: 40px;
+  background-color: transparent;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  padding: 8px;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.hamburger:hover {
+  background-color: #f1f5f9;
+  border-color: var(--border-hover);
+}
+
+.hamburger-line {
+  width: 20px;
+  height: 2px;
+  background-color: var(--text-main);
+  border-radius: 2px;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+/* Hamburger open animation */
+.navbar.open .hamburger-line:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.navbar.open .hamburger-line:nth-child(2) {
+  opacity: 0;
+}
+
+.navbar.open .hamburger-line:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* Mobile Navigation Drawer (Hidden unless .navbar.open) */
+.nav-links {
+  display: none;
+  width: 100%;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--border-color);
+}
+
+.navbar.open .nav-links {
+  display: flex;
 }
 
 .nav-link {
-  font-size: 0.975rem;
+  display: block;
+  width: 100%;
+  font-size: 1rem;
   font-weight: 600;
   color: var(--text-muted);
   position: relative;
-  padding: 0.25rem 0;
+  padding: 0.4rem 0;
 }
 
 .nav-link:hover {
   color: var(--primary-color);
 }
 
-.nav-link::after {
-  content: '';
-  position: absolute;
-  width: 0;
-  height: 2px;
-  bottom: 0;
-  left: 0;
-  background-color: var(--primary-color);
-  transition: width 0.25s ease;
-}
-
-.nav-link:hover::after {
-  width: 100%;
-}
-
 .nav-cta {
-  font-size: 0.875rem;
-  padding: 0.5rem 1rem;
+  display: none;
 }
 
 /* ==========================================================================
@@ -182,7 +220,7 @@ img {
   font-family: var(--font-main);
   font-size: 0.95rem;
   font-weight: 600;
-  padding: 0.75rem 1.5rem;
+  padding: 0.75rem 1.4rem;
   border-radius: var(--radius-sm);
   cursor: pointer;
   border: 1px solid transparent;
@@ -232,13 +270,13 @@ img {
    Section Common Styles
    ========================================================================== */
 .section {
-  padding: var(--space-xl) 0;
+  padding: 3rem 0;
 }
 
 .section-header {
   text-align: center;
   max-width: 680px;
-  margin: 0 auto var(--space-lg) auto;
+  margin: 0 auto 2rem auto;
 }
 
 .section-eyebrow {
@@ -251,30 +289,30 @@ img {
 }
 
 .section-title {
-  font-size: 2.25rem;
+  font-size: 1.85rem;
   margin-bottom: 0.75rem;
   letter-spacing: -0.5px;
 }
 
 .section-description {
   color: var(--text-muted);
-  font-size: 1.05rem;
+  font-size: 1rem;
 }
 
 /* ==========================================================================
-   About / Hero Section
+   About / Hero Section (Mobile-First Stacked -> Desktop Side-by-Side)
    ========================================================================== */
 .about-section {
   background: linear-gradient(180deg, #ffffff 0%, var(--bg-color) 100%);
   border-bottom: 1px solid var(--border-color);
-  padding-top: calc(var(--space-xl) - 1rem);
 }
 
 .about-container {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
-  gap: 3.5rem;
+  text-align: center;
+  gap: 2rem;
 }
 
 .about-avatar-wrapper {
@@ -286,6 +324,8 @@ img {
 }
 
 .about-avatar {
+  width: 180px;
+  height: 180px;
   border-radius: var(--radius-full);
   box-shadow: var(--shadow-lg);
   border: 4px solid #ffffff;
@@ -332,6 +372,7 @@ img {
 
 .about-content {
   flex: 1;
+  width: 100%;
 }
 
 .greeting-subtitle {
@@ -344,7 +385,7 @@ img {
 }
 
 .hero-title {
-  font-size: 3rem;
+  font-size: 2.25rem;
   letter-spacing: -1px;
   margin-bottom: 0.35rem;
   background: linear-gradient(135deg, var(--text-main) 60%, var(--primary-color) 100%);
@@ -354,7 +395,7 @@ img {
 
 .role-badge {
   display: inline-block;
-  font-size: 1.05rem;
+  font-size: 1rem;
   font-weight: 600;
   color: var(--primary-color);
   margin-bottom: 1.25rem;
@@ -362,8 +403,8 @@ img {
 
 .about-bio {
   color: var(--text-muted);
-  font-size: 1.025rem;
-  margin-bottom: 1rem;
+  font-size: 1rem;
+  margin: 0 auto 1rem auto;
   max-width: 650px;
 }
 
@@ -371,204 +412,68 @@ img {
   color: var(--text-main);
 }
 
-/* Stats Grid */
-.stats-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-  gap: 1rem;
-  margin: 1.75rem 0 2rem 0;
-  max-width: 650px;
-}
-
-.stat-card {
-  background-color: var(--card-bg);
-  border: 1px solid var(--border-color);
-  border-radius: var(--radius-sm);
-  padding: 0.85rem 1rem;
-  text-align: center;
-  box-shadow: var(--shadow-sm);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.stat-card:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-md);
-}
-
-.stat-number {
-  display: block;
-  font-size: 1.35rem;
-  font-weight: 800;
-  color: var(--primary-color);
-  letter-spacing: -0.5px;
-}
-
-.stat-label {
-  font-size: 0.775rem;
-  font-weight: 600;
-  color: var(--text-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
 .about-actions {
   display: flex;
-  gap: 1rem;
-}
-
-/* ==========================================================================
-   Skills Section
-   ========================================================================== */
-.skills-section {
-  background-color: #ffffff;
-  border-bottom: 1px solid var(--border-color);
-}
-
-.skills-categories-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
-  gap: 1.5rem;
-  margin-bottom: 2.5rem;
-}
-
-.skills-category-card {
-  background-color: var(--bg-color);
-  border: 1px solid var(--border-color);
-  border-radius: var(--radius-md);
-  padding: 1.75rem;
-  box-shadow: var(--shadow-sm);
-  transition: transform 0.2s ease, border-color 0.2s ease;
-}
-
-.skills-category-card:hover {
-  border-color: #cbd5e1;
-  transform: translateY(-2px);
-}
-
-.category-header {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  margin-bottom: 0.4rem;
-}
-
-.category-icon {
-  font-size: 1.5rem;
-}
-
-.category-title {
-  font-size: 1.15rem;
-}
-
-.category-desc {
-  font-size: 0.875rem;
-  color: var(--text-muted);
-  margin-bottom: 1.25rem;
-}
-
-.skills-list {
-  display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
-}
-
-.skill-tag {
-  background-color: #eef2ff;
-  color: var(--primary-color);
-  font-size: 0.825rem;
-  font-weight: 600;
-  padding: 0.35rem 0.75rem;
-  border-radius: var(--radius-sm);
-  border: 1px solid #c7d2fe;
-}
-
-/* Internship Roadmap Banner */
-.internship-banner {
-  background: linear-gradient(135deg, #1e1b4b 0%, #0f172a 100%);
-  border-radius: var(--radius-md);
-  padding: 2rem;
-  color: #ffffff;
-  box-shadow: var(--shadow-md);
-}
-
-.banner-badge {
-  display: inline-block;
-  font-size: 0.8rem;
-  font-weight: 700;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  color: #818cf8;
-  margin-bottom: 1.25rem;
-}
-
-.roadmap-steps {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1rem;
-}
-
-.roadmap-step {
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: var(--radius-sm);
-  padding: 1rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.35rem;
-}
-
-.roadmap-step.current {
-  border-color: #6366f1;
-  background: rgba(99, 102, 241, 0.18);
-}
-
-.step-num {
-  font-size: 0.75rem;
-  font-weight: 700;
-  color: #a5b4fc;
-  text-transform: uppercase;
-}
-
-.step-title {
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: #f8fafc;
-  line-height: 1.35;
-  flex-grow: 1;
-}
-
-.step-badge {
-  font-size: 0.75rem;
-  font-weight: 700;
-  color: #34d399;
-  margin-top: 0.5rem;
-}
-
-.roadmap-step:not(.current) .step-badge {
-  color: #94a3b8;
+  justify-content: center;
+  gap: 0.85rem;
+  margin-top: 1.5rem;
 }
 
 /* ==========================================================================
-   Projects Section (Flexbox Row + Cards + Stretch Goal Hover Effect)
+   Projects Section (Filter Controls + Mobile Column -> Desktop Flex Row)
    ========================================================================== */
 .projects-section {
   background-color: var(--bg-color);
 }
 
-.projects-container {
-  /* Flexbox row layout with wrap and gap */
+/* Filter Button Bar */
+.filter-controls {
   display: flex;
   flex-wrap: wrap;
-  gap: 2rem;
   justify-content: center;
+  gap: 0.65rem;
+  margin-bottom: 2rem;
+}
+
+.filter-btn {
+  font-family: var(--font-main);
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-full);
+  padding: 0.5rem 1.15rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: var(--shadow-sm);
+}
+
+.filter-btn:hover {
+  color: var(--primary-color);
+  border-color: var(--primary-color);
+  background-color: #eef2ff;
+}
+
+/* Stretch Goal: Highlight Active Filter Button */
+.filter-btn.active {
+  background-color: var(--primary-color);
+  color: #ffffff;
+  border-color: var(--primary-color);
+  box-shadow: 0 2px 6px rgba(79, 70, 229, 0.3);
+}
+
+.projects-container {
+  /* Mobile-first: stack in 1 column */
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
   align-items: stretch;
 }
 
 .project-card {
-  /* Flex item configuration */
-  flex: 1 1 calc(33.333% - 2rem);
-  min-width: 290px;
-  max-width: 360px;
+  width: 100%;
   background-color: var(--card-bg);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-md);
@@ -576,12 +481,9 @@ img {
   overflow: hidden;
   display: flex;
   flex-direction: column;
-
-  /* Stretch Goal: Card Hover Effect with transform and transition */
   transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
-/* Stretch Goal hover effect (small lift with transform: translateY(-4px)) */
 .project-card:hover {
   transform: translateY(-4px);
   box-shadow: var(--shadow-lg);
@@ -590,7 +492,7 @@ img {
 
 .card-image-wrapper {
   width: 100%;
-  height: 200px;
+  height: 190px;
   background-color: #0f172a;
   overflow: hidden;
 }
@@ -606,8 +508,23 @@ img {
   transform: scale(1.03);
 }
 
-.card-body {
+/* Graceful Placeholder for newly added array objects without an image field */
+.card-image-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   padding: 1.5rem;
+  text-align: center;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #ffffff;
+  background: linear-gradient(135deg, #4f46e5 0%, #06b6d4 100%);
+}
+
+.card-body {
+  padding: 1.35rem;
   display: flex;
   flex-direction: column;
   flex-grow: 1;
@@ -635,7 +552,6 @@ img {
   margin-bottom: 1rem;
 }
 
-/* Project Highlights Bullet List */
 .project-highlights {
   list-style: none;
   margin-bottom: 1.25rem;
@@ -697,6 +613,13 @@ img {
   color: var(--primary-hover);
 }
 
+.no-projects-msg {
+  text-align: center;
+  color: var(--text-muted);
+  padding: 2rem;
+  width: 100%;
+}
+
 /* ==========================================================================
    Contact Section
    ========================================================================== */
@@ -707,32 +630,38 @@ img {
 
 .contact-wrapper {
   display: flex;
-  gap: 3rem;
-  align-items: flex-start;
-  justify-content: space-between;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: stretch;
 }
 
 .contact-info {
-  flex: 1;
+  width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 1.25rem;
+  gap: 1rem;
 }
 
 .contact-card {
   display: flex;
   align-items: flex-start;
-  gap: 1.25rem;
-  padding: 1.25rem;
+  gap: 1rem;
+  padding: 1.15rem;
   background-color: var(--bg-color);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-md);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+  min-width: 0;
 }
 
 .contact-card:hover {
   transform: translateY(-2px);
   box-shadow: var(--shadow-sm);
+}
+
+.contact-card > div:last-child {
+  min-width: 0;
+  flex: 1;
 }
 
 .contact-icon {
@@ -763,20 +692,15 @@ img {
 }
 
 .contact-card-link {
-  font-size: 1.05rem;
+  font-size: 0.95rem;
   font-weight: 600;
   color: var(--text-main);
-  word-break: break-all;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .contact-card-link:hover {
   color: var(--primary-color);
-}
-
-.contact-card-text {
-  font-size: 0.95rem;
-  font-weight: 600;
-  color: var(--text-main);
 }
 
 .contact-subtext {
@@ -787,11 +711,11 @@ img {
 
 /* Contact Form */
 .contact-form {
-  flex: 1.2;
+  width: 100%;
   background-color: var(--card-bg);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-md);
-  padding: 2rem;
+  padding: 1.5rem;
   box-shadow: var(--shadow-sm);
 }
 
@@ -829,7 +753,7 @@ img {
 }
 
 /* ==========================================================================
-   Semantic Footer
+   Semantic Footer (Mobile-First)
    ========================================================================== */
 .site-footer {
   background-color: #0f172a;
@@ -840,9 +764,9 @@ img {
 
 .footer-container {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  text-align: center;
   align-items: center;
-  flex-wrap: wrap;
   gap: 1.5rem;
   padding-bottom: var(--space-lg);
 }
@@ -865,7 +789,9 @@ img {
 
 .footer-links {
   display: flex;
-  gap: 1.75rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.25rem;
   align-items: center;
 }
 
@@ -896,71 +822,148 @@ img {
 }
 
 /* ==========================================================================
-   Responsive Media Queries (Mobile & Tablet)
+   Mobile-First Media Queries (Tablet & Desktop >= 768px)
    ========================================================================== */
-@media (max-width: 900px) {
-  .about-container {
-    flex-direction: column;
-    text-align: center;
-    gap: 2rem;
+@media (min-width: 768px) {
+  .container {
+    padding: 0 1.5rem;
   }
 
-  .about-bio {
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .stats-grid {
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .skills-list {
-    justify-content: center;
-  }
-
-  .about-actions {
-    justify-content: center;
-  }
-
-  .contact-wrapper {
-    flex-direction: column;
-  }
-}
-
-@media (max-width: 640px) {
   .site-header {
-    padding: 0.75rem 1rem;
+    padding: 0.85rem 1.5rem;
   }
 
-  .nav-links {
-    gap: 1rem;
+  .navbar {
+    flex-wrap: nowrap;
+    gap: var(--space-md);
   }
 
-  .nav-cta {
+  /* Hide hamburger on tablet & desktop */
+  .hamburger {
     display: none;
   }
 
-  .hero-title {
-    font-size: 2.25rem;
+  /* Show nav links inline on tablet & desktop */
+  .nav-links {
+    display: flex;
+    width: auto;
+    flex-direction: row;
+    align-items: center;
+    gap: 2rem;
+    padding-top: 0;
+    border-top: none;
+  }
+
+  .nav-link {
+    width: auto;
+    font-size: 0.975rem;
+    padding: 0.25rem 0;
+  }
+
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--primary-color);
+    transition: width 0.25s ease;
+  }
+
+  .nav-link:hover::after {
+    width: 100%;
+  }
+
+  .nav-cta {
+    display: inline-flex;
+    font-size: 0.875rem;
+    padding: 0.5rem 1rem;
+  }
+
+  .section {
+    padding: var(--space-xl) 0;
   }
 
   .section-title {
-    font-size: 1.85rem;
+    font-size: 2.25rem;
+  }
+
+  /* Project Cards sit in a Flex Row on Larger Screens */
+  .projects-container {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+    align-items: stretch;
   }
 
   .project-card {
-    max-width: 100%;
-    flex: 1 1 100%;
+    flex: 1 1 calc(50% - 2rem);
+    min-width: 290px;
+    max-width: 360px;
+  }
+
+  .contact-form {
+    padding: 2rem;
   }
 
   .footer-container {
-    flex-direction: column;
-    text-align: center;
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: left;
+  }
+}
+
+/* ==========================================================================
+   Desktop Media Query (>= 960px)
+   ========================================================================== */
+@media (min-width: 960px) {
+  .about-section {
+    padding-top: calc(var(--space-xl) - 1rem);
   }
 
-  .footer-links {
-    flex-wrap: wrap;
-    justify-content: center;
+  .about-container {
+    flex-direction: row;
+    text-align: left;
+    justify-content: space-between;
+    gap: 3.5rem;
+  }
+
+  .about-avatar {
+    width: 220px;
+    height: 220px;
+  }
+
+  .hero-title {
+    font-size: 3rem;
+  }
+
+  .about-bio {
+    margin: 0 0 1rem 0;
+  }
+
+  .about-actions {
+    justify-content: flex-start;
+  }
+
+  /* 3 cards in a row on desktop */
+  .project-card {
+    flex: 1 1 calc(33.333% - 2rem);
+  }
+
+  .contact-wrapper {
+    flex-direction: row;
+    gap: 3rem;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+
+  .contact-info {
+    flex: 1;
+  }
+
+  .contact-form {
+    flex: 1.2;
   }
 }

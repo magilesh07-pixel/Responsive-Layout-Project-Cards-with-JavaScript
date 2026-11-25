@@ -1,8 +1,8 @@
 # Personal Developer Portfolio - Magilesh MB
 
-> **Week 1 Milestone Project** for the **Full Stack Engineer Virtual Internship** at **SkillMe**.
+> **Week 1 & Week 2 Milestones** for the **Full Stack Engineer Virtual Internship** at **SkillMe**.
 
-A clean, modern, and accessible single-page developer portfolio website built from scratch using pure semantic HTML5 and modern CSS3 (Flexbox, CSS Variables, and responsive design).
+A clean, responsive, and interactive single-page developer portfolio website built with semantic HTML5, mobile-first CSS3 (Flexbox, CSS Variables, and Media Queries), and vanilla JavaScript DOM manipulation.
 
 ---
 
@@ -20,42 +20,33 @@ A clean, modern, and accessible single-page developer portfolio website built fr
 
 ## 🚀 Featured Projects Showcased
 
+All project cards are dynamically rendered from a `projects` JavaScript array in [script.js](script.js) via `renderProjects()`:
+
 1. **[HealthGuard AI](https://github.com/magilesh07-pixel/healthguard-ai)**
    - *Category:* Healthcare & AI Assistant
-   - *Key Features:*
-     - Real-time physiological vital monitoring & telemetry (Heart Rate, SpO2).
-     - AI-driven automated symptom assessment & predictive risk alerts.
-     - Personalized patient wellness analytics and status classification.
-   - *Tech:* Python, AI / ML, Biometrics, HealthTech
+   - *Tech:* `Python`, `AI / ML`, `HTML/CSS`, `HealthTech`
 
 2. **[National Agriculture Portal](https://github.com/magilesh07-pixel/NATIONAL-AGRICULTURE-PORTAL)**
    - *Category:* AgTech & Web Portal
-   - *Key Features:*
-     - Real-time Minimum Support Price (MSP) rate tracker across regions.
-     - Agro-weather advisories, rain forecasts & soil moisture indicators.
-     - Centralized access to government agricultural schemes (PM-KISAN).
-   - *Tech:* HTML5, CSS Flexbox, Web Portal, Agriculture
+   - *Tech:* `HTML/CSS`, `JavaScript`, `Flexbox`, `Web Portal`
 
 3. **[FreshGuard AI](https://github.com/magilesh07-pixel/FreahGuard-AI)**
    - *Category:* Food Tech & Computer Vision
-   - *Key Features:*
-     - Deep learning visual scanner for fruit & vegetable inspection.
-     - Automated freshness grading (A+ Grade score) and defect detection.
-     - Dynamic shelf-life estimation to prevent food waste in retail & homes.
-   - *Tech:* Computer Vision, Deep Learning, Object Detection, AI Quality
+   - *Tech:* `Python`, `AI / ML`, `Computer Vision`, `Deep Learning`
 
 ---
 
-## 🛠️ Tech Stack & Key Concepts
+## 🛠️ Features & Tech Stack
 
-- **Semantic HTML5:** Built strictly with semantic tags (`<header>`, `<nav>`, `<main>`, `<section>`, `<article>`, `<footer>`).
-- **Modern CSS3:**
-  - CSS Custom Properties / Variables defined in `:root` for colors, typography, shadows, and radii.
-  - Flexbox for responsive navigation and uniform project card rows.
-  - Smooth scrolling navigation (`html { scroll-behavior: smooth; }`) with anchor links (`#about`, `#projects`, `#contact`).
-  - Card hover lift effect (`transform: translateY(-4px)`) and transition physics.
-- **Accessibility (a11y):** Meaningful `alt` attributes on all images, semantic headings hierarchy (`h1`, `h2`, `h3`), ARIA labels, and high-contrast color palette.
-- **Zero External Dependencies:** Native CSS and crisp SVG vector graphics for instant loading and zero broken links.
+### Week 1: Semantic HTML5 & CSS3 Foundation
+- **Semantic HTML5:** Structured with `<header>`, `<nav>`, `<main>`, `<section>`, `<article>`, and `<footer>`.
+- **Modern CSS3:** Design tokens in `:root`, smooth scrolling (`scroll-behavior: smooth`), Flexbox layouts, and hover lift effects (`transform: translateY(-4px)`).
+
+### Week 2: Responsive Layout & JavaScript Interactivity
+- **Mobile-First Media Queries:** Tested down to **375px** width with zero horizontal overflow; project cards stack in a single column on mobile and arrange in a responsive row on tablet/desktop.
+- **Interactive Mobile Hamburger Menu:** Hidden on desktop (`>= 768px`), toggles the `.open` class on `.navbar` via `addEventListener`, and **automatically closes** when any navigation link is clicked.
+- **Data-Driven Project Cards:** Project objects live in `projects` inside `script.js` (`title`, `description`, `tags`, `link`, etc.) and render cleanly with `array.map()` and template literals.
+- **Interactive Tag Filtering:** Filter buttons (`All`, `HTML/CSS`, `JavaScript`, `Python`, `AI / ML`) dynamically filter cards with `array.filter()` and highlight the active selection.
 
 ---
 
@@ -63,9 +54,10 @@ A clean, modern, and accessible single-page developer portfolio website built fr
 
 ```text
 Portfolio/
-├── index.html          # Semantic HTML5 document with live project links
-├── style.css           # Modern CSS styling with CSS variables & flexbox
-├── README.md           # Documentation & internship submission details
+├── index.html          # Semantic HTML5 document with hamburger & filter controls
+├── style.css           # Mobile-first CSS3 with media queries & design tokens
+├── script.js           # Vanilla JS for mobile menu, project rendering & filtering
+├── README.md           # Documentation & internship milestone details
 └── images/             # Vector SVGs and assets
     ├── profile.svg     # Developer portrait illustration
     ├── project1.svg    # HealthGuard AI preview graphic
@@ -82,24 +74,3 @@ Portfolio/
    Start-Process .\index.html
    ```
 2. Or simply double-click `index.html` in Windows Explorer.
-
----
-
-## 📝 Official SkillMe LinkedIn Post Caption (Ready to Copy)
-
-```text
-🚀 Excited to share my Week 1 milestone for 'Modern Interactive Portfolio & DevStudio' in the Full Stack Engineer Virtual Internship at @SkillMe!
-
-What I did in Week 1:
-• Built my personal portfolio website from scratch using semantic HTML and CSS
-• Designed a clean layout with flexbox and a consistent colour theme using CSS variables
-• Structured the page into About, Projects and Contact sections with smooth in-page navigation
-
-Here's a quick demo of it running 👇
-
-🔗 GitHub Repository: https://github.com/magilesh07-pixel/Portfolio-page-with-HTML-and-CSS__SkillMe
-
-We're hiring tech interns. Apply now - https://www.skill-me-intern.in/apply?utm_source=linkedin&utm_medium=student_post&utm_campaign=week1&utm_content=web-dev
-
-#SkillMe #SkillMeInternship #WebDevelopment #BuildInPublic #LearningByDoing #TechInternship
-```

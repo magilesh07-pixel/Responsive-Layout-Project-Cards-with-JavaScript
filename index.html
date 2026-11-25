@@ -15,7 +15,16 @@
   <header class="site-header">
     <nav class="navbar" aria-label="Main Navigation">
       <a href="#top" class="nav-brand">Magilesh<span>.dev</span></a>
-      <ul class="nav-links">
+
+      <!-- Mobile Hamburger Button -->
+      <button type="button" class="hamburger" id="hamburger-btn" aria-label="Toggle navigation menu"
+        aria-expanded="false" aria-controls="primary-nav-links">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
+
+      <ul class="nav-links" id="primary-nav-links">
         <li><a href="#about" class="nav-link">About</a></li>
         <li><a href="#projects" class="nav-link">Projects</a></li>
         <li><a href="#contact" class="nav-link">Contact</a></li>
@@ -46,8 +55,7 @@
           <p class="about-bio">
             I am a passionate Web Developer focused on building clean, accessible, and high-performance digital
             solutions.
-            Currently honing my full-stack capabilities through the <strong>SkillMe Virtual Internship</strong>, I
-            specialize in crafting
+            Currently honing my full-stack capabilities through SkillMe, I specialize in crafting
             semantic markup, responsive CSS architectures with Flexbox and Grid, and intuitive user interfaces.
           </p>
 
@@ -57,8 +65,6 @@
             and data telemetry to solve real-world problems in healthcare monitoring, agriculture welfare, and food
             quality analysis.
           </p>
-
-
 
           <div class="about-actions">
             <a href="#projects" class="btn btn-primary">View Featured Projects</a>
@@ -80,120 +86,17 @@
           </p>
         </header>
 
-        <!-- Flexbox Projects Grid -->
-        <div class="projects-container">
-          <!-- Project Card 1: HealthGuard AI -->
-          <article class="project-card">
-            <div class="card-image-wrapper">
-              <img src="images/project1.svg"
-                alt="HealthGuard AI dashboard preview with biometric vital signs, ECG telemetry, and AI diagnosis feed"
-                class="card-img" loading="lazy">
-            </div>
-            <div class="card-body">
-              <span class="card-category">Healthcare & AI Assistant</span>
-              <h3 class="card-title">HealthGuard AI</h3>
-              <p class="card-description">
-                An intelligent healthcare monitoring assistant designed for real-time symptom analysis, vital telemetry
-                tracking, and personalized risk assessment.
-              </p>
-
-              <ul class="project-highlights" aria-label="Key features">
-                <li>Real-time biometric monitoring & vital telemetry (Heart Rate, SpO2)</li>
-                <li>AI-driven automated symptom assessment & predictive risk alerts</li>
-                <li>Personalized patient wellness analytics and status classification</li>
-              </ul>
-
-              <ul class="card-tags" aria-label="Project technologies">
-                <li class="tag">Python</li>
-                <li class="tag">AI / ML</li>
-                <li class="tag">Biometrics</li>
-                <li class="tag">HealthTech</li>
-              </ul>
-
-              <div class="card-footer">
-                <a href="https://github.com/magilesh07-pixel/healthguard-ai" target="_blank" rel="noopener noreferrer"
-                  class="project-link" aria-label="View HealthGuard AI source code on GitHub">
-                  View on GitHub <span aria-hidden="true">&rarr;</span>
-                </a>
-              </div>
-            </div>
-          </article>
-
-          <!-- Project Card 2: National Agriculture Portal -->
-          <article class="project-card">
-            <div class="card-image-wrapper">
-              <img src="images/project2.svg"
-                alt="National Agriculture Portal preview showing crop MSP rates, soil health telemetry, and farmer schemes"
-                class="card-img" loading="lazy">
-            </div>
-            <div class="card-body">
-              <span class="card-category">AgTech & Web Portal</span>
-              <h3 class="card-title">National Agriculture Portal</h3>
-              <p class="card-description">
-                A unified agricultural web platform providing farmers with live MSP crop pricing, agro-climatic weather
-                advisories, and direct access to welfare schemes.
-              </p>
-
-              <ul class="project-highlights" aria-label="Key features">
-                <li>Real-time Minimum Support Price (MSP) rate tracker across regions</li>
-                <li>Agro-weather advisories, rain forecasts & soil moisture indicators</li>
-                <li>Single-window hub for government agricultural schemes (PM-KISAN)</li>
-              </ul>
-
-              <ul class="card-tags" aria-label="Project technologies">
-                <li class="tag">HTML5 & CSS</li>
-                <li class="tag">Flexbox</li>
-                <li class="tag">Agriculture</li>
-                <li class="tag">Web Portal</li>
-              </ul>
-
-              <div class="card-footer">
-                <a href="https://github.com/magilesh07-pixel/NATIONAL-AGRICULTURE-PORTAL" target="_blank"
-                  rel="noopener noreferrer" class="project-link"
-                  aria-label="View National Agriculture Portal repository on GitHub">
-                  View on GitHub <span aria-hidden="true">&rarr;</span>
-                </a>
-              </div>
-            </div>
-          </article>
-
-          <!-- Project Card 3: FreshGuard AI -->
-          <article class="project-card">
-            <div class="card-image-wrapper">
-              <img src="images/project3.svg"
-                alt="FreshGuard AI computer vision scanner interface detecting produce freshness score and shelf life estimation"
-                class="card-img" loading="lazy">
-            </div>
-            <div class="card-body">
-              <span class="card-category">Food Tech & Computer Vision</span>
-              <h3 class="card-title">FreshGuard AI</h3>
-              <p class="card-description">
-                A computer vision inspection system that assesses produce freshness, estimates remaining shelf life, and
-                minimizes waste using automated visual recognition.
-              </p>
-
-              <ul class="project-highlights" aria-label="Key features">
-                <li>Deep learning visual scanner for fruit & vegetable inspection</li>
-                <li>Automated freshness grading (A+ Grade score) and defect detection</li>
-                <li>Dynamic shelf-life estimation to prevent food waste in retail & homes</li>
-              </ul>
-
-              <ul class="card-tags" aria-label="Project technologies">
-                <li class="tag">Computer Vision</li>
-                <li class="tag">Deep Learning</li>
-                <li class="tag">Object Detection</li>
-                <li class="tag">AI Quality</li>
-              </ul>
-
-              <div class="card-footer">
-                <a href="https://github.com/magilesh07-pixel/FreahGuard-AI" target="_blank" rel="noopener noreferrer"
-                  class="project-link" aria-label="View FreshGuard AI source code on GitHub">
-                  View on GitHub <span aria-hidden="true">&rarr;</span>
-                </a>
-              </div>
-            </div>
-          </article>
+        <!-- Dynamic Filter Buttons -->
+        <div class="filter-controls" role="group" aria-label="Filter projects by technology">
+          <button type="button" class="filter-btn active" data-filter="All" aria-pressed="true">All</button>
+          <button type="button" class="filter-btn" data-filter="HTML/CSS" aria-pressed="false">HTML/CSS</button>
+          <button type="button" class="filter-btn" data-filter="JavaScript" aria-pressed="false">JavaScript</button>
+          <button type="button" class="filter-btn" data-filter="Python" aria-pressed="false">Python</button>
+          <button type="button" class="filter-btn" data-filter="AI / ML" aria-pressed="false">AI / ML</button>
         </div>
+
+        <!-- Dynamically Rendered Projects Container (Populated by script.js) -->
+        <div class="projects-container" id="projects-container" aria-live="polite"></div>
       </div>
     </section>
 
@@ -260,8 +163,6 @@
                 <p class="contact-subtext">Source code, repositories & contributions</p>
               </div>
             </div>
-
-
           </div>
 
           <!-- Contact Form -->
@@ -313,11 +214,14 @@
     </div>
     <div class="footer-bottom">
       <div class="container">
-        <p>&copy; 2026 Magilesh MB. Built for <strong>SkillMe Full Stack Engineer Virtual Internship</strong> (Week 1
+        <p>&copy; 2026 Magilesh MB. Built for <strong>SkillMe Full Stack Engineer Virtual Internship</strong> (Week 2
           Milestone).</p>
       </div>
     </div>
   </footer>
+
+  <!-- JavaScript linked at the end of body -->
+  <script src="script.js"></script>
 </body>
 
 </html>
