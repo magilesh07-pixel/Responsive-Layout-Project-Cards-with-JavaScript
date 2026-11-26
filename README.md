@@ -76,3 +76,24 @@ Portfolio/
    Start-Process .\index.html
    ```
 2. Or simply double-click `index.html` in Windows Explorer.
+
+---
+
+## 📝 Official SkillMe Week 2 LinkedIn Post Caption (Ready to Copy)
+
+```text
+🚀 Excited to share my Week 2 milestone for 'Modern Interactive Portfolio & DevStudio' in the Full Stack Engineer Virtual Internship at @SkillMe!
+
+What I did in Week 2:
+• Made my portfolio fully responsive using media queries and a mobile-first approach
+• Built a mobile hamburger menu with vanilla JavaScript and DOM events
+• Rendered project cards dynamically from a JavaScript array with category filters
+
+Here's a quick demo of it running 👇
+
+🔗 GitHub Repository: https://github.com/magilesh07-pixel/Responsive-Layout-Project-Cards-with-JavaScript
+
+We're hiring tech interns. Apply now - https://www.skill-me-intern.in/apply?utm_source=linkedin&utm_medium=student_post&utm_campaign=week2&utm_content=web-dev
+
+#SkillMe #SkillMeInternship #WebDevelopment #BuildInPublic #LearningByDoing #TechInternship
+```
