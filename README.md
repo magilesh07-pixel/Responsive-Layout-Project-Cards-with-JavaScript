@@ -1,6 +1,8 @@
-# Personal Developer Portfolio - Magilesh MB
+# Responsive Portfolio & Dynamic Project Cards - Magilesh MB
 
-> **Week 1 & Week 2 Milestones** for the **Full Stack Engineer Virtual Internship** at **SkillMe**.
+> **Week 2 Milestone Project** for the **Full Stack Engineer Virtual Internship** at **SkillMe** (building upon Week 1).
+
+🔗 **Repository:** [Responsive-Layout-Project-Cards-with-JavaScript](https://github.com/magilesh07-pixel/Responsive-Layout-Project-Cards-with-JavaScript)
 
 A clean, responsive, and interactive single-page developer portfolio website built with semantic HTML5, mobile-first CSS3 (Flexbox, CSS Variables, and Media Queries), and vanilla JavaScript DOM manipulation.
 
